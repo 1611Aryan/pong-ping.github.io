@@ -1,8 +1,8 @@
 // JavaScript Document
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
-canvas.width = window.innerWidth/2;
-canvas.height = window.innerHeight/1;
+canvas.width = window.innerWidth / 2;
+canvas.height = window.innerHeight / 1;
 const pi = Math.PI
 let mouse = {
   x: canvas.width / 2,
@@ -10,7 +10,7 @@ let mouse = {
 };
 let i = 0;
 let j = 0;
-let increment=1;
+let increment = 1;
 
 ///////////////////////////////////////////////////
 
@@ -47,15 +47,15 @@ const user2 = {
   height: canvas.height / 5,
   width: canvas.width / 65,
   color: 'olive',
-  level: 0.7
+  level: 0.07
 };
 
 
 let orb = {
   x: canvas.width / 2,
   y: (Math.random() * canvas.height / 1.4) + canvas.width / 75,
-  dx: undefined,//defined in init functio random value between [-8,-4]U[4,8]
-  dy: undefined,//defined in init functio random value between [-8,-4]U[4,8]
+  dx: undefined, //defined in init functio random value between [-8,-4]U[4,8]
+  dy: undefined, //defined in init functio random value between [-8,-4]U[4,8]
   radius: canvas.width / 60,
   color: 'red'
 };
@@ -121,14 +121,13 @@ function Ball(x, y, dx, dy, radius, color) {
   if (this.dy > -3 && this.dy < 0) {
     this.dy = -4;
   }
-    if(j>=1){
-        if (this.dx<0){
-            this.dx-=increment+j/10;
-        }
-        else{
-            this.dx+=increment+j/10;
-        }
+  if (j >= 1) {
+    if (this.dx < 0) {
+      this.dx -= increment + j / 10;
+    } else {
+      this.dx += increment + j / 10;
     }
+  }
   this.update = () => {
     //Ball Bounds Defined
     if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
@@ -138,10 +137,13 @@ function Ball(x, y, dx, dy, radius, color) {
       this.dx = -this.dx;
       if (this.x < canvas.width / 2) {
         i++;
-        init();
+          
+          this.radius=0;
+        setTimeout(() => init(), 1000);
       } else {
         j++;
-        init();
+         this.radius=0;
+        setTimeout(() => init(), 1000);
       }
     }
 
@@ -158,17 +160,18 @@ let ball;
 ////////////////////////////////////////////////////////////
 
 function init() {
+  text();
   player1 = undefined;
   player2 = undefined;
   ball = undefined;
-    orb.dx=random();
-    orb.dy=random();
+  orb.dx = random();
+  orb.dy = random();
   player1 = new Paddle(user1.x, user1.y, user1.z, user1.width, user1.height, user1.color, user1.level);
 
   player2 = new Paddle(user2.x, user2.y, user2.z, user2.width, user2.height, user2.color, user2.level);
 
   ball = new Ball(orb.x, orb.y, orb.dx, orb.dy, orb.radius, orb.color);
-  text();
+
 }
 
 function Divider() {
