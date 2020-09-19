@@ -7,15 +7,36 @@ body{
     margin:0px;
     padding:0;
     overflow:hidden;
-    background-color:gold;
+    background-color:orangered;
 }
 canvas{
-    background-color:#000000;
+    background-color:#ffffff;
     position:absolute;
     left:25%;
+    border:5px solid  #000000;
     
 }
 #wrapper{
     position:absolute;
     left:10%;
+}
+p{
+    display:inline-block;
+    color:white;
+    font-size:10rem;
+    position:relative;
+    top:30%;
+    
+}
+#left{
+    position:absolute;
+    -webkit-transform:rotate(270deg);
+    transform: rotate(270deg);
+    left:8%;
+}
+#right{
+    position:absolute;
+    left:68%;
+    -webkit-transform:rotate(90deg);
+    transform: rotate(90deg);
 }
