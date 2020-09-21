@@ -1,7 +1,7 @@
 // JavaScript Document
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
-canvas.width = window.innerWidth / 2;
+canvas.width = window.innerWidth / 1.8;
 canvas.height = window.innerHeight / 1;
 const pi = Math.PI
 let mouse = {
@@ -29,7 +29,7 @@ window.addEventListener('mousemove', function (event) {
 function random() {
   return ((Math.random() - 0.5) * 12);
 }
-//Objects
+//////////////////////////////////////Objects
 const user1 = {
   x: 0,
   y: 0,
@@ -46,21 +46,21 @@ const user2 = {
   z: 0,
   height: canvas.height / 5,
   width: canvas.width / 50,
-  color: 'olive',
+  color: 'navy',
   level: 0.05
 };
 
 
 let orb = {
   x: canvas.width / 2,
-  y: canvas.height/2,
+  y: canvas.height / 2,
   dx: undefined, //defined in init functio random value between [-8,-4]U[4,8]
   dy: undefined, //defined in init functio random value between [-8,-4]U[4,8]
   radius: canvas.width / 60,
   color: 'red'
 };
 
-/////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
 
 function Paddle(x, y, z, width, height, color, level) {
   this.x = x;
@@ -92,7 +92,7 @@ let player1;
 
 let player2;
 
-///////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 
 function Ball(x, y, dx, dy, radius, color) {
   this.x = x;
@@ -106,6 +106,9 @@ function Ball(x, y, dx, dy, radius, color) {
     c.beginPath();
     c.arc(this.x, this.y, this.radius, 0, pi * 2, false);
     c.fillStyle = this.color;
+    c.lineWidth = 0.5;
+    c.strokeStyle = 'navy';
+    c.stroke;
     c.fill();
 
   }
@@ -159,7 +162,7 @@ function Ball(x, y, dx, dy, radius, color) {
 }
 
 let ball;
-////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
 
 function init() {
   text();
@@ -169,9 +172,7 @@ function init() {
   orb.dx = random();
   orb.dy = random();
   player1 = new Paddle(user1.x, user1.y, user1.z, user1.width, user1.height, user1.color, user1.level);
-  $('#left').css("color",user1.color);
   player2 = new Paddle(user2.x, user2.y, user2.z, user2.width, user2.height, user2.color, user2.level);
-$('#right').css("color",user2.color);
   ball = new Ball(orb.x, orb.y, orb.dx, orb.dy, orb.radius, orb.color);
 }
 
@@ -188,7 +189,7 @@ function Divider() {
 }
 
 const divider = new Divider;
-//////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
 function collision(p, b) {
   p.top = p.y;
   p.bottom = p.y + p.height;
@@ -211,12 +212,12 @@ function collision(p, b) {
   }
 }
 
-///////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
 
 function text(i = 0, j = 0) {
 
   c.font = "10rem Arial";
-  c.fillStyle = 'black';
+  c.fillStyle = 'white';
   c.fillText(j, canvas.width * (1 / 2 - 1 / 5), canvas.height / 8);
   c.fillText(i, canvas.width * (1 / 2 + 1 / 8), canvas.height / 8);
   //console.log('text');
